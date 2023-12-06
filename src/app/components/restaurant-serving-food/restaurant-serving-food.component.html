@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-4" *ngFor="let item of restaurantList">
+        <div class="card">
+            <div class="card-body">
+                <div class="row "  >
+                    
+                    <div class="col-3">
+                        <img class="img-height"  [src]="item.photoUrl" alt="">
+                    </div>
+                    <div class="col-9 text-end item-categoryName " >
+                        {{item.categoryName}}
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-4">
+                        {{item.restaurantName}}
+                    </div>
+                    <div class="col-4 text-center">
+                        {{item.openingHours}}
+                    </div>
+                    <div class="col-4 text-end">
+                        <button class="btn btn-success btn-sm" [disabled]="!item.availability"(click)="navigate(item.restaurantID)">Order</button>
+                        <!-- <button class="btn btn-success btn-sm" (click)="navigate(item.restaurantID)">Order</button> -->
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12" *ngIf="restaurantList.length==0">
+        <p>No restaurant currently serving this food icon</p>
+    </div>
+</div>

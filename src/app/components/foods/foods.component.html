@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col pt-2" *ngFor="let x of foodItems">
+        <div class="card" (click)="navigateToRestaurantFoods(x.categoryId)">
+            <img [src]="x.photoUrl" class="card-img-top img-height" alt="Card Image">
+            <div class="card-body">
+              <h5 class="card-title">{{x.categoryName}}</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <!-- <a href="#" class="btn btn-primary">See profile</a> -->
+            </div>
+          </div>
+    </div>
+</div>

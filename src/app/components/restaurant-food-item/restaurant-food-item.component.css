@@ -1,0 +1,10 @@
+img, svg {
+    vertical-align: middle;
+    height: 21vh;
+}
+
+
+img-small-height{
+    vertical-align: middle;
+    height: 10vh;
+}

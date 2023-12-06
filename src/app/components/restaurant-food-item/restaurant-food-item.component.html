@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-8">
+        <div class="row">
+            <div class="col-4" *ngFor="let item of foodItemsList">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row "  >
+                            
+                            <div class="col-3">
+                                <img class="img-height"  [src]="item.photoUrl" alt="">
+                            </div>
+                            <div class="col-9 text-end item-categoryName " >
+                               <span>&#8377;</span> {{item.price}}
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                {{item.description | slice:0-20}}
+                            </div>
+                            <div class="col-8 text-end">
+                              <button class="btn btn-sm btn-danger" (click)="addToCart(item.itemID)">Add to Cart</button>
+                                <!-- {{item.menuItemName}} -->
+                            </div>
+                            <!-- <div class="col-4 text-end"> -->
+                                <!-- <button class="btn btn-success btn-sm" [disabled]="item.availability"(click)="navigate(item.restaurantID)">Order</button> -->
+                                <!-- <button class="btn btn-success btn-sm" (click)="navigate(item.restaurantID)">Order</button> -->
+                                <!-- <button class="btn btn-success btn-sm" >Order</button> -->
+                                <!-- {{item.itemID}}
+                            </div> -->
+        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12">
+                <h4>Cart Items</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12" *ngFor="let cart of cartItems">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4" >
+                                <img class="img-small-height" [src]="cart.photoUrl" alt="">
+                            </div>
+                            <div class="col-8 text-end">
+                                 {{cart.menuItemName}}
+                                 <br>
+                                 <span>&#8377;</span>{{cart.price}} * {{cart.quantity}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12" *ngIf="cartItems.length == 0">
+                  <p>Cart is empty!!</p>
+            </div>
+        </div>    
+        
+        <div class="row">
+            <div class="col-12 text-end">
+                Total Amount - {{totalAmount}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <textarea class="form-control"  [(ngModel)]="deliveryAddress"  name="" id="" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-end">
+                <button class="btn btn-primary" [disabled]="cartItems.length! == 0" (click)="PlaceOrder()">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="row">
+    <div class="col-12" *ngIf="foodItemsList.length==0">
+        <p>No restaurant currently serving this food item</p>
+    </div>
+</div>
